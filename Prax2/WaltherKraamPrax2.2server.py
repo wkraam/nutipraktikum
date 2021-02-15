@@ -9,7 +9,7 @@ numconn = 10
 buffer_size = 4096
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-
+s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 print('---Scoket created---')
 
 #bind socket to a local host and port
@@ -35,7 +35,7 @@ def clientthread(conn):
 			data = conn.recv(buffer_size)
 			if not data:
 				break
-			reply = '---OK---'+data.encode() #encode bytes to string
+			reply = '---OK---' + data.decode() #encode bytes to string
 			conn.sendall(reply.encode())
 			print('recived: ')
 			print(data.decode())
