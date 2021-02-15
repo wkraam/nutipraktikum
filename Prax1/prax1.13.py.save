@@ -1,0 +1,22 @@
+try:
+	import RPi.GPIO as GPIO
+except RuntimeError:
+	print("...error importing RPi.GPIO module")
+
+from time import sleep
+
+GPIO.setmode(GPIO.BOARD)
+pins=[40, 38, 36, 32, 28, 26, 24, 22, 18, 16]
+GPIO.setup(pins, GPIO.OUT)
+
+activePins = []
+inactivePins = copy(pins)
+activePins.append(inactivePins.pop(0))
+for i in range(2): #  ei taha while(True) loopi teha
+	GPIO.output(activePins, 1)
+	GPIO.output(inactivePins, 0)
+	activePins.append(inactivePins.pop(0))
+	inactivePins.append(activePins.pop(1))
+	sleep(0.01)
+	print(inactivePinseeeeeeeeeeeeeeeeeee)
+GPIO.cleanup(pins)
