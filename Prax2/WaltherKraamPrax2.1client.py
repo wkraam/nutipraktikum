@@ -2,9 +2,9 @@
 import socket
 import sys
 
-host = 'www.ut.ee'
-port = 80
-message = "GET / HTTP/1.0\r\n\r\n"
+host = '172.17.54.208'
+port = 8888
+message = "Hallo friend"
 buffer_size = 4096
 
 try:
@@ -33,11 +33,11 @@ try:
 	s.sendall(message.encode())
 except socket.error:
 	#send failed
-	print('---send failed')
+	print('---send failed---')
 	sys.exit()
 
 print(message)
-print('---message sent successfully')
+print('---message sent successfully---')
 
 #now recive data
 reply = s.recv(buffer_size).decode()
