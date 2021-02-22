@@ -40,6 +40,13 @@ def clientthread(conn):
 			if not data:
 				break
 			reply = '---OK---' + data.decode() #encode bytes to string
+			dataString = data.decode()
+			if dataString == "start":
+				import prax1_12 as program
+			elif dataString.isnumeric():
+				program.freq = dataString
+			elif dataString == "stop":
+				sys.exit()
 			conn.sendall(reply.encode())
 			print('recived: ')
 			print(data.decode())
@@ -49,6 +56,7 @@ def clientthread(conn):
 			print(message)
 			break
 	conn.close()
+
 while True:
 	#wait to accept a connection - blocking call
 	conn, addr = s.accept()
