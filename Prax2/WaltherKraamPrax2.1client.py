@@ -37,7 +37,7 @@ s.connect((remote_ip, port))
 print('---Socket connected to '+host+' is '+remote_ip)
 
 reply = s.recv(buffer_size).decode()
-print(reply)
+print("reply: "+reply)
 
 try:
 	#send string encoded as byte
